@@ -1,17 +1,20 @@
 import React from "react";
 
-import Button from "./Button.jsx";
-import ArrowIcon from "./ArrowIcon";
+import Button from "./Button";
+import ChevronIcon from "./ChevronIcon";
+
+const mod = (x, m) => {
+  //"reverse" mod for negative numbers
+  return ((x % m) + m) % m;
+};
 
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: props.children.length * 1000, //avoid dealing with negative numbers
+      index: 0,
     };
   }
-
-  componentDidMount() {}
 
   handlePrev = () => {
     let newIndex = this.state.index + 1;
@@ -26,27 +29,6 @@ class Carousel extends React.Component {
       index: newIndex,
     });
   };
-
-  //Graveyard of broken dreams
-  //   getChild = (position) => {
-  //
-  //     let { children } = this.props;
-  //     let { index } = this.state;
-
-  //     let truePosition = index + position; //6
-
-  //     //let loopIter = Math.floor(index/5)//how many times have we looped the static divs
-  //     let offset = position % children.length; //0
-  //     let positionLoop = Math.floor(truePosition / 5); //1
-
-  //     let childPosition = position + positionLoop * 5; //4+5=9
-
-  //     childPosition = childPosition % children.length; //should return 2 //getValidIndex(childPosition, children.length-1)
-
-  //     //childPosition = truePosition%children.length
-
-  //     return children[childPosition];
-  //   };
 
   getStyle = (k) => {
     let styleArray = [
@@ -95,10 +77,8 @@ class Carousel extends React.Component {
   render() {
     let { children } = this.props;
     let { index } = this.state;
-    console.log(index);
-
     let images = children.map((img, k) => {
-      let i = Math.abs((index + k + 2) % children.length);
+      let i = mod(index + k + 2, children.length);
       return (
         <div
           key={k}
@@ -115,12 +95,12 @@ class Carousel extends React.Component {
         {images}
         <div className="absolute w-20 z-50 left-0 ml-40">
           <Button onClick={() => this.handlePrev()}>
-            <ArrowIcon dir="left"></ArrowIcon>
+            <ChevronIcon dir="left"></ChevronIcon>
           </Button>
         </div>
         <div className="absolute w-20 z-50 right-0 mr-40">
           <Button onClick={() => this.handleNext()}>
-            <ArrowIcon dir="right"></ArrowIcon>
+            <ChevronIcon dir="right"></ChevronIcon>
           </Button>
         </div>
       </div>

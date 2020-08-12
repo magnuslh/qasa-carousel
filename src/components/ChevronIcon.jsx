@@ -1,6 +1,6 @@
 import React from "react";
 
-function ArrowIcon(props) {
+function ChevronIcon(props) {
   if (props.dir === "left") {
     return (
       <svg
@@ -30,4 +30,4 @@ function ArrowIcon(props) {
   }
 }
 
-export default ArrowIcon;
+export default ChevronIcon;

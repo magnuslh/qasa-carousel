@@ -7,7 +7,7 @@ function Image(props) {
     minHeight: "20vh",
     width: "auto",
   };
-  return <img style={style} src={props.src}></img>;
+  return <img style={style} src={props.src} alt={props.alt}></img>;
 }
 
 export default Image;
