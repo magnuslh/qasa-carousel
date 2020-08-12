@@ -1,5 +1,18 @@
 # Qasa Carousel
+This is an image carousel that takes any amount of images and loops them indefinitely. You can control the carousel with two floating buttons.
+The core functionality is inside the Carousel component. I've also made an Image, Button and ChevronIcon component. 
 
+## Future improvements
+
+
+* Responsiveness across screen sizes. 
+  * More suitable animation for mobile devices.
+* Scroll and drag interaction. 
+* Swipe controls on mobile. 
+* Optimization for large datasets.
+* Improve animations.
+
+---------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
